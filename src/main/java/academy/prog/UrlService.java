@@ -70,7 +70,7 @@ public class UrlService {
         UrlStatDTO stat = new UrlStatDTO();
         stat.setMessage("I dont have old links");
         Date today = new Date();
-        for (UrlRecord urlRecor : records) {
+        for (UrlRecord urlRecor: records) {
             int raz = today.getDay() - urlRecor.getLastAccess().getDay();
             if (raz >= 1) {
                 delUrl(urlRecor.getId());
