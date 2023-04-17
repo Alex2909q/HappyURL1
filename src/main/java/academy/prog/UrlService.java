@@ -67,14 +67,18 @@ public class UrlService {
     public List<UrlStatDTO> delOldLink() {
         var records = urlRepository.findAll();
         var result = new ArrayList<UrlStatDTO>();
+        UrlStatDTO stat = new UrlStatDTO();
+        stat.setMessage("I dont have old links");
         Date today = new Date();
         for (UrlRecord urlRecor : records) {
             int raz = today.getDay() - urlRecor.getLastAccess().getDay();
-            if (raz >= 0) {
+            if (raz >= 1) {
                 delUrl(urlRecor.getId());
                 result.add(urlRecor.toStatDTO());
+                return result;
             }
-        }return result;
+        }
+        result.add(stat);
+        return result;
     }
-
 }
