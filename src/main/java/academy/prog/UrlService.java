@@ -68,7 +68,7 @@ public class UrlService {
         var records = urlRepository.findAll();
         var result = new ArrayList<UrlStatDTO>();
         UrlStatDTO stat = new UrlStatDTO();
-        stat.setMessage(" 0i0 dont have old links");
+        stat.setMessage(" 0i dont have old links");
         Date today = new Date();
         for (UrlRecord urlRecor : records) {
             int raz = today.getDay() - urlRecor.getLastAccess().getDay();
